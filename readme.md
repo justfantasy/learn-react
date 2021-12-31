@@ -70,3 +70,4 @@ class App extends Component {
 
 export default App;
 ```
+7. 新建目录src/components
