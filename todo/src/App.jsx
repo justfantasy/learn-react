@@ -10,10 +10,10 @@ class App extends Component {
     this.state = { items: [] };
   }
 
-  createItem = (obj) => {
+  createItem = (item) => {
     const { items } = this.state;
     this.setState({
-      items: [obj, ...items],
+      items: [item, ...items],
     });
   };
 
