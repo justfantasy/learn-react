@@ -1,51 +1,52 @@
 import React, { Component, createRef } from 'react';
+import store from '../../redux/store';
 
 class Count extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0 };
+    this.state = {};
     this.ref = createRef();
   }
 
+  componentDidMount() {
+    store.subscribe(() => {
+      this.setState({});
+    });
+  }
+
   increment = () => {
-    const { count } = this.state;
-    this.setState({
-      count: count + (+this.ref.current.value),
+    store.dispatch({
+      type: 'increment',
+      data: +this.ref.current.value,
     });
   };
 
   decrement = () => {
-    const { count } = this.state;
-    this.setState({
-      count: count - (+this.ref.current.value),
+    store.dispatch({
+      type: 'decrement',
+      data: +this.ref.current.value,
     });
   };
 
   oddIncrement = () => {
-    const { count } = this.state;
+    const count = store.getState();
     if (count % 2 !== 0) {
-      this.setState({
-        count: count + (+this.ref.current.value),
-      });
+      this.increment();
     }
   };
 
   asyncIncrement = () => {
-    const { count } = this.state;
     setTimeout(() => {
-      this.setState({
-        count: count + (+this.ref.current.value),
-      });
+      this.increment();
     }, 1000);
   };
 
   render() {
-    const { count } = this.state;
     return (
       <div>
         <h1>
           当前求和为：
-          {count}
+          {store.getState()}
         </h1>
         <select ref={this.ref}>
           <option value="1">1</option>
