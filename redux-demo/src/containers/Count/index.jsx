@@ -4,5 +4,5 @@ import { incrementAction, decrementAction, incrementAsync } from '../../redux/ac
 
 export default connect(
   (state) => ({ state }),
-  { incrementAction, decrementAction, incrementAsync },
+  { incrementAction, decrementAction, incrementAsync }, // 对象形式自动分发
 )(Count);
