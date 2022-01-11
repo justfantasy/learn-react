@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import store from '../../redux/store';
-import { incrementAction, decrementAction } from '../../redux/actions/count';
+import { incrementAction, decrementAction, incrementAsync } from '../../redux/actions/count';
 
 class Count extends Component {
   constructor(props) {
@@ -31,9 +31,7 @@ class Count extends Component {
   };
 
   asyncIncrement = () => {
-    setTimeout(() => {
-      this.increment();
-    }, 1000);
+    store.dispatch(incrementAsync(+this.ref.current.value, 1000));
   };
 
   render() {
