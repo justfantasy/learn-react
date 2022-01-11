@@ -9,34 +9,34 @@ class Count extends Component {
   }
 
   increment = () => {
-    const { increment } = this.props;
-    increment(+this.ref.current.value);
+    const { incrementAction } = this.props;
+    incrementAction(+this.ref.current.value);
   };
 
   decrement = () => {
-    const { decrement } = this.props;
-    decrement(+this.ref.current.value);
+    const { decrementAction } = this.props;
+    decrementAction(+this.ref.current.value);
   };
 
   oddIncrement = () => {
-    const { count } = this.props;
-    if (count % 2 !== 0) {
+    const { state } = this.props;
+    if (state % 2 !== 0) {
       this.increment();
     }
   };
 
   asyncIncrement = () => {
-    const { incAsync } = this.props;
-    incAsync(+this.ref.current.value, 1000);
+    const { incrementAsync } = this.props;
+    incrementAsync(+this.ref.current.value, 1000);
   };
 
   render() {
-    const { count } = this.props;
+    const { state } = this.props;
     return (
       <div>
         <h1>
           当前求和为：
-          {count}
+          {state}
         </h1>
         <select ref={this.ref}>
           <option value="1">1</option>
@@ -57,10 +57,10 @@ class Count extends Component {
 }
 
 Count.propTypes = {
-  count: PropTypes.number.isRequired,
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  incAsync: PropTypes.func.isRequired,
+  state: PropTypes.number.isRequired,
+  incrementAction: PropTypes.func.isRequired,
+  decrementAction: PropTypes.func.isRequired,
+  incrementAsync: PropTypes.func.isRequired,
 };
 
 export default Count;
