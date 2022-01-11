@@ -1,10 +1,12 @@
+import { INCREMENT, DECREMENT } from '../constants';
+
 function count(preState, action) {
   const initState = 0;
   const { type, data } = action;
   switch (type) {
-    case 'increment':
+    case INCREMENT:
       return preState + data;
-    case 'decrement':
+    case DECREMENT:
       return preState - data;
     default:
       return initState;

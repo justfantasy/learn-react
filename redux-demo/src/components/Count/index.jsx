@@ -1,5 +1,6 @@
 import React, { Component, createRef } from 'react';
 import store from '../../redux/store';
+import { incrementAction, decrementAction } from '../../redux/actions/count';
 
 class Count extends Component {
   constructor(props) {
@@ -15,17 +16,11 @@ class Count extends Component {
   }
 
   increment = () => {
-    store.dispatch({
-      type: 'increment',
-      data: +this.ref.current.value,
-    });
+    store.dispatch(incrementAction(+this.ref.current.value));
   };
 
   decrement = () => {
-    store.dispatch({
-      type: 'decrement',
-      data: +this.ref.current.value,
-    });
+    store.dispatch(decrementAction(+this.ref.current.value));
   };
 
   oddIncrement = () => {
