@@ -1,11 +1,7 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import countReducer from './reducers/count';
-import personReducer from './reducers/person';
+import reducers from './reducers';
 
-const store = createStore(combineReducers({
-  countReducer,
-  personReducer,
-}), applyMiddleware(thunk));
+const store = createStore(reducers, applyMiddleware(thunk));
 
 export default store;

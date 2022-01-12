@@ -60,6 +60,6 @@ Person.propTypes = {
 };
 
 export default connect(
-  (state) => ({ person: state.personReducer, count: state.countReducer }),
+  (state) => ({ person: state.person, count: state.count }),
   { addPerson: addPersonAction },
 )(Person);

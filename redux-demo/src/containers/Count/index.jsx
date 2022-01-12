@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { incrementAction, decrementAction, incrementAsync } from '../../redux/actions/count';
+import { increment, decrement, incrementAsync } from '../../redux/actions/count';
 
 class Count extends Component {
   constructor(props) {
@@ -11,34 +11,34 @@ class Count extends Component {
   }
 
   increment = () => {
-    const { increment } = this.props;
-    increment(+this.ref.current.value);
+    const { incr } = this.props;
+    incr(+this.ref.current.value);
   };
 
   decrement = () => {
-    const { decrement } = this.props;
-    decrement(+this.ref.current.value);
+    const { decr } = this.props;
+    decr(+this.ref.current.value);
   };
 
   oddIncrement = () => {
-    const { state } = this.props;
-    if (state % 2 !== 0) {
+    const { count } = this.props;
+    if (count % 2 !== 0) {
       this.increment();
     }
   };
 
   asyncIncrement = () => {
-    const { incAsync } = this.props;
-    incAsync(+this.ref.current.value, 1000);
+    const { incrAsync } = this.props;
+    incrAsync(+this.ref.current.value, 1000);
   };
 
   render() {
-    const { state } = this.props;
+    const { count } = this.props;
     return (
       <div>
         <h1>
           当前求和为：
-          {state.countReducer}
+          {count}
         </h1>
         <select ref={this.ref}>
           <option value="1">1</option>
@@ -59,14 +59,14 @@ class Count extends Component {
 }
 
 Count.propTypes = {
-  state: PropTypes.objectOf(PropTypes.any).isRequired,
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  incAsync: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
+  incr: PropTypes.func.isRequired,
+  decr: PropTypes.func.isRequired,
+  incrAsync: PropTypes.func.isRequired,
 };
 
 // 容器组件将状态和方法传递给子组件UI组件。这样子组件UI组件不需要直接调用store的API，也能保证redux变更状态，UI组件也能重新渲染
 export default connect(
-  (state) => ({ state }),
-  { increment: incrementAction, decrement: decrementAction, incAsync: incrementAsync }, // 对象形式自动分发
+  (state) => ({ count: state.count }),
+  { incr: increment, decr: decrement, incrAsync: incrementAsync }, // 对象形式自动分发
 )(Count);
