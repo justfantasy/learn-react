@@ -65,6 +65,7 @@ Count.propTypes = {
   incAsync: PropTypes.func.isRequired,
 };
 
+// 容器组件将状态和方法传递给子组件UI组件。这样子组件UI组件不需要直接调用store的API，也能保证redux变更状态，UI组件也能重新渲染
 export default connect(
   (state) => ({ state }),
   { increment: incrementAction, decrement: decrementAction, incAsync: incrementAsync }, // 对象形式自动分发
