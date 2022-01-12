@@ -38,7 +38,7 @@ class Count extends Component {
       <div>
         <h1>
           当前求和为：
-          {state}
+          {state.countReducer}
         </h1>
         <select ref={this.ref}>
           <option value="1">1</option>
@@ -59,7 +59,7 @@ class Count extends Component {
 }
 
 Count.propTypes = {
-  state: PropTypes.number.isRequired,
+  state: PropTypes.objectOf(PropTypes.any).isRequired,
   increment: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
   incAsync: PropTypes.func.isRequired,
