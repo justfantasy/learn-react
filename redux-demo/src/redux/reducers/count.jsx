@@ -1,7 +1,8 @@
 import { INCREMENT, DECREMENT } from '../constants';
 
-function count(preState, action) {
-  const initState = 0;
+const initState = 0;
+// eslint-disable-next-line default-param-last
+function count(preState = initState, action) {
   const { type, data } = action;
   switch (type) {
     case INCREMENT:
@@ -9,7 +10,7 @@ function count(preState, action) {
     case DECREMENT:
       return preState - data;
     default:
-      return initState;
+      return preState;
   }
 }
 
