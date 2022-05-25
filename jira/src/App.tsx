@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import './App.scss';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,7 +20,7 @@ function App() {
         <p>
           Edit
           {' '}
-          <code>App.jsx</code>
+          <code>App.tsx</code>
           {' '}
           and save to test HMR updates.
         </p>
