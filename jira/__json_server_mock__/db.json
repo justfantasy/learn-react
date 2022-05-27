@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "name": "Jack",
+      "age": "18",
+      "id": 1
+    },
+    {
+      "name": "Lily",
+      "age": "18",
+      "id": 2
+    }
+  ],
+  "projects": [
+    {
+      "userId": 1,
+      "name": "项目1",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "name": "项目2",
+      "id": 2
+    }
+  ]
+}
