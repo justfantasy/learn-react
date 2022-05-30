@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ProjectList from '../../components/ProjectList';
 import SearchPanel from '../../components/SearchPanel';
 import useUsers from '../../hooks/useUsers';
@@ -12,7 +12,7 @@ function Home() {
   });
 
   const users = useUsers();
-  const projects = useProjects();
+  const projects = useProjects(search);
 
   return (
     <div>
