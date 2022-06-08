@@ -2,13 +2,14 @@ import React from 'react';
 import { User } from '../../interfaces/UserInterface';
 import { Search } from '../../interfaces/SearchInterface';
 
-interface props {
+interface Props {
   users: User[] | [],
-  setSearch: Function,
+  // eslint-disable-next-line no-unused-vars
+  setSearch: (param: Search) => void,
   search: Search
 }
 
-function SearchPanel({ users, search, setSearch }: props) {
+function SearchPanel({ users, search, setSearch }: Props) {
   return (
     <form>
       <input

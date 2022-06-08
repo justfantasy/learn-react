@@ -7,9 +7,8 @@ import useDebounce from './useDebounce';
 
 export default function useProjects(search: Search) {
   const [projects, setProjects] = useState<Project[] | []>([]);
-  console.log('search', search);
-  const debouncedSearch = useDebounce(search, 2000);
-  console.log('debouncedSearch', debouncedSearch);
+  const debouncedSearch = useDebounce(search, 1000);
+
   useEffect(() => {
     fetch(`http://localhost:3001/projects?${qs.stringify(filterFalsyObject(debouncedSearch))}`)
       .then((res) => res.json())

@@ -1,4 +1,4 @@
-export function isFalsy(value: any) {
+export function isFalsy(value: unknown) {
   return value === 0 ? true : !value;
 }
 
